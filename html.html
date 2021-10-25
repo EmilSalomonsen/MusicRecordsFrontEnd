@@ -14,10 +14,13 @@
 
     <div id = "app">
     <button id="getAllButton" v-on:click="getAllMusicrecords" class="btn btn-primary">Get all records</button>
+    <br/>
+    <input v-model="parametersToGetBy" placeholder="parameter" type="text"/>
+    <button v-on:click="getByParameters(parametersToGetBy)" class="btn btn-primary">Search button</button>
 
     <ul id="MusicRecordList" v-if="musicrecords.length">
         <li v-for="musicrecord in musicrecords">
-                {{musicrecord.title}} {{musicrecord.Artist}} {{musicrecord.Duration}} {{musicrecord.PublicationYear}}
+                {{musicrecord.title}}, {{musicrecord.artist}}, {{musicrecord.duration}}, {{musicrecord.publicationYear}}
         </li>
 
     </ul>

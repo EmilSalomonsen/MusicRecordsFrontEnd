@@ -4,7 +4,8 @@ Vue.createApp({
 
     data(){
         return{
-            musicrecords: []
+            musicrecords: [],
+            parametersToGetBy: "",
         }
     },
 
@@ -25,6 +26,12 @@ Vue.createApp({
             } catch (ex) {
                 alert(ex.message) // https://www.w3schools.com/js/js_popup.asp
             }
+        },
+
+        getByParameters(parameter){
+            const url = baseurl + "?title=" + parameter
+            this.helperGetAndShow(url)
+            console.log(this.musicrecords)
         }
 
     }
