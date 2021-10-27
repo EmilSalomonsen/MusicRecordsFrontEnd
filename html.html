@@ -26,7 +26,13 @@
     </ul>
     <div v-else>No records </div>
     
-
+    <h2>ADD</h2>
+    <input v-model="addData.title" placeholder="Title" type="text"/>
+    <input v-model="addData.artist" placeholder="Artist" type="text"/>
+    <input v-model="addData.duration" placeholder="Duration" type="number"/>
+    <input v-model="addData.publicationYear" placeholder="PublicationYear" type="number"/>
+    <button v-on:click="addRecord()" class="btn btn-success">Add</button>
+    <div>{{addMessage}}</div>
     </div>
     <script src="js.js"></script>
 </body>

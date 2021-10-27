@@ -6,6 +6,8 @@ Vue.createApp({
         return{
             musicrecords: [],
             parametersToGetBy: "",
+            addData: {title: "", artist: "", duration: 0, publicationYear: 0},
+            addMessage: ""
         }
     },
 
@@ -32,7 +34,16 @@ Vue.createApp({
             const url = baseurl + "?title=" + parameter
             this.helperGetAndShow(url)
             console.log(this.musicrecords)
-        }
+        },
+        async addRecord() {
+            try {
+                response = await axios.post(baseurl, this.addData)
+                this.addMessage = "response " + response.status + " " + response.statusText
+                this.getAllMusicrecords()
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
 
     }
 }).mount("#app")
