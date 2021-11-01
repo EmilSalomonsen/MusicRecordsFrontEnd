@@ -7,7 +7,11 @@ Vue.createApp({
             musicrecords: [],
             parametersToGetBy: "",
             addData: {title: "", artist: "", duration: 0, publicationYear: 0},
-            addMessage: ""
+            addMessage: "",
+            deleteTitle: "",
+            deleteMessage: "",
+            updateData: {title: "", artist: "", duration: 0, publicationYear: 0},
+            updateMessage: "" 
         }
     },
 
@@ -44,6 +48,26 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
+        async deleteRecord(deleteTitle) {
+            const url = baseurl + "/" + deleteTitle
+            try {
+                response = await axios.delete(url)
+                this.deleteMessage = response.status + " " + response.statusText
+                this.getAllMusicrecords()
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
+        async updateRecord() {
+            const url = baseurl + "/" + this.updateData.id
+            try {
+                response = await axios.put(url, this.updateData)
+                this.updateMessage = "response " + response.status + " " + response.statusText
+                this.getAllMusicrecords()
+            } catch (ex) {
+                alert(ex.message)
+            }
+        }
 
     }
 }).mount("#app")

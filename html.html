@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <title>Music Records</title>
@@ -33,6 +34,20 @@
     <input v-model="addData.publicationYear" placeholder="PublicationYear" type="number"/>
     <button v-on:click="addRecord()" class="btn btn-success">Add</button>
     <div>{{addMessage}}</div>
+
+    <h2>DELETE</h2>
+    <input v-model="deleteTitle" placeholder="Title" type="text"/>
+    <button v-on:click="deleteRecord(deleteTitle)" class="btn btn-warning">Delete</button>
+    <div>{{deleteMessage}}</div>
+
+    <h2>UPDATE</h2>
+    <input v-model="updateData.title" placeholder="Title" type="text"/>
+    <input v-model="updateData.artist" placeholder="Artist" type="text"/>
+    <input v-model="updateData.duration" placeholder="Duration" type="number"/>
+    <input v-model="updateData.publicationYear" placeholder="PublicationYear" type="number"/>
+    <button v-on:click="updateRecord()" class="btn btn-success">Update</button>
+    <div>{{updateMessage}}</div>
+
     </div>
     <script src="js.js"></script>
 </body>
