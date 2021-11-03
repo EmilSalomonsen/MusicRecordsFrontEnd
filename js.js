@@ -10,6 +10,7 @@ Vue.createApp({
             addMessage: "",
             deleteTitle: "",
             deleteMessage: "",
+            updateTitle: "",
             updateData: {title: "", artist: "", duration: 0, publicationYear: 0},
             updateMessage: "" 
         }
@@ -59,7 +60,7 @@ Vue.createApp({
             }
         },
         async updateRecord() {
-            const url = baseurl + "/" + this.updateData.id
+            const url = baseurl + "/" + this.updateData.title
             try {
                 response = await axios.put(url, this.updateData)
                 this.updateMessage = "response " + response.status + " " + response.statusText
