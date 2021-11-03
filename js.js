@@ -2,24 +2,24 @@ const baseurl = "https://danmarksradiorestserver.azurewebsites.net/api/MusicReco
 
 Vue.createApp({
 
-    data(){
-        return{
+    data() {
+        return {
             musicrecords: [],
             parametersToGetBy: "",
-            addData: {title: "", artist: "", duration: 0, publicationYear: 0},
+            addData: { title: "", artist: "", duration: 0, publicationYear: 0 },
             addMessage: "",
             deleteTitle: "",
             deleteMessage: "",
             updateTitle: "",
-            updateData: {title: "", artist: "", duration: 0, publicationYear: 0},
-            updateMessage: "" 
+            updateData: { title: "", artist: "", duration: 0, publicationYear: 0 },
+            updateMessage: ""
         }
     },
 
 
     methods:
     {
-        getAllMusicrecords(){
+        getAllMusicrecords() {
             this.helperGetAndShow(baseurl)
         },
 
@@ -35,7 +35,7 @@ Vue.createApp({
             }
         },
 
-        getByParameters(parameter){
+        getByParameters(parameter) {
             const url = baseurl + "?title=" + parameter
             this.helperGetAndShow(url)
             console.log(this.musicrecords)
@@ -58,6 +58,13 @@ Vue.createApp({
             } catch (ex) {
                 alert(ex.message)
             }
+        },
+       deleteMe() {
+            $(document).ready(function () {
+                $(".deleteMe").on("click", function () {
+                    $(this).closest("li").remove();
+                });
+            })
         },
         async updateRecord() {
             const url = baseurl + "/" + this.updateData.title
